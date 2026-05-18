@@ -1,0 +1,40 @@
+<form #miForm="ngForm" (ngSubmit)="Guardar(formRef)" #formRef novalidate [ngClass]="{'was-validated': formValidacion}">
+
+    <div class="mb-3">
+        <label class="form-label text-secondary font-weight-bold">Nombre del Producto:</label>
+        <input type="text" [(ngModel)]="producto.nombre" name="nombre" class="form-control" required
+            placeholder="Ej. Pantalla LED">
+        <div class="valid-feedback">¡Correcto!</div>
+        <div class="invalid-feedback">Por favor, escribe el nombre del producto.</div>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label text-secondary font-weight-bold">Cantidad: </label>
+        <input type="number" [(ngModel)]="producto.cantidad" name="cantidad" class="form-control" required min="1"
+            placeholder="Mínimo 1">
+        <div class="valid-feedback">¡Correcto!</div>
+        <div class="invalid-feedback">La cantidad debe ser un número entero mayor a 0.</div>
+    </div>
+
+    <div class="mb-4">
+        <label class="form-label text-secondary font-weight-bold">Tipo de Producto:</label>
+
+        <select [(ngModel)]="producto.tipoProducto.idTipo" name="idTipo" class="form-control" required>
+            <option value="" disabled selected>Selecciona un tipo...</option>
+
+            <option *ngFor="let tipo of tipos" [value]="tipo.idTipo">
+                {{ tipo.nombreTipo }}
+            </option>
+        </select>
+
+        <div class="valid-feedback">¡Tipo seleccionado!</div>
+        <div class="invalid-feedback">Por favor, elige un tipo de producto válido.</div>
+    </div>
+
+    <div class="modal-footer border-top-0 pt-3 px-0 pb-0">
+        <button type="button" class="btn btn-secondary px-4" data-bs-dismiss="modal"
+            (click)="formValidacion = false">Cancelar</button>
+        <button type="submit" class="btn btn-primary px-4">Guardar Producto</button>
+    </div>
+
+</form>

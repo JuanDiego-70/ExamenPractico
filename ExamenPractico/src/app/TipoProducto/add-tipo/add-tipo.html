@@ -1,0 +1,19 @@
+<form #miForm="ngForm" (ngSubmit)="Guardar(formRef)" #formRef novalidate [ngClass]="{'was-validated': formValidacion}">
+
+    <div class="mb-3">
+        <label class="form-label text-secondary font-weight-bold">Nombre del Tipo de Producto:</label>
+
+        <input type="text" [(ngModel)]="tipoProducto.nombreTipo" name="nombreTipo" class="form-control" required
+            placeholder="Ej. Electrónicos, Línea Blanca, Alimentos">
+
+        <div class="valid-feedback">¡Correcto!</div>
+        <div class="invalid-feedback">Por favor, escribe el nombre del tipo de producto.</div>
+    </div>
+
+    <div class="modal-footer border-top-0 pt-3 px-0 pb-0">
+        <button type="button" class="btn btn-secondary px-4" data-bs-dismiss="modal"
+            (click)="formValidacion = false">Cancelar</button>
+        <button type="submit" class="btn btn-primary px-4">Guardar Tipo</button>
+    </div>
+
+</form>
