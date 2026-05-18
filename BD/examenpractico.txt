@@ -1,0 +1,15 @@
+CREATE DATABASE examenpractico;
+USE examenpractico;
+
+CREATE TABLE tipos_producto(
+    id_tipo INT AUTO_INCREMENT PRIMARY KEY,
+    nombre_tipo VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE productos(
+    id_producto INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    cantidad INT NOT NULL,
+    id_tipo INT NOT NULL,
+    FOREIGN KEY(id_tipo) REFERENCES tipos_producto(id_tipo)
+);
